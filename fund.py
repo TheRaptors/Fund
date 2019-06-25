@@ -13,6 +13,13 @@ import ConfigParser
 import optparse
 import re
 
+# 新增配置文件参数，默认为'fund.conf'
+# 2019.06.25
+if len(sys.argv) == 1:
+    CONFIG = 'fund.conf'
+elif len(sys.argv) == 2:
+    CONFIG = sys.argv[1]
+
 # API_URL
 fund_api_url = "https://fundmobapi.eastmoney.com/FundMApi/FundVarietieValuationDetail.ashx"
 stock_api_url = "http://hq.sinajs.cn/list=s_{0}"
@@ -208,7 +215,7 @@ def main():
     (options, args) = parser.parse_args()
 
     cf = ConfigParser.ConfigParser()
-    cf.read("./fund.conf")
+    cf.read(CONFIG)
     fund_id_list = cf.options("fund")
     stock_id_list = cf.options("stock")
     buy_fund_pair_list = cf.items("buy_fund")
