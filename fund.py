@@ -13,12 +13,14 @@ import ConfigParser
 import optparse
 import re
 
+"""
 # 新增配置文件参数，默认为'fund.conf'
 # 2019.06.25
 if len(sys.argv) == 1:
     CONFIG = 'fund.conf'
 elif len(sys.argv) == 2:
     CONFIG = sys.argv[1]
+"""
 
 # API_URL
 fund_api_url = "https://fundmobapi.eastmoney.com/FundMApi/FundVarietieValuationDetail.ashx"
