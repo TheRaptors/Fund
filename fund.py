@@ -12,15 +12,14 @@ import logging.config
 import ConfigParser
 import optparse
 import re
+import traceback
 
-"""
 # 新增配置文件参数，默认为'fund.conf'
 # 2019.06.25
 if len(sys.argv) == 1:
     CONFIG = 'fund.conf'
 elif len(sys.argv) == 2:
     CONFIG = sys.argv[1]
-"""
 
 # API_URL
 fund_api_url = "https://fundmobapi.eastmoney.com/FundMApi/FundVarietieValuationDetail.ashx"
@@ -246,7 +245,12 @@ def main():
         time.sleep(1)
 
 if __name__ == "__main__":
-    try:
-        main()
-    except:
-        print SHOW_CURSOR
+    while 1:
+        try:
+            main()
+        except KeyboardInterrupt:
+            print SHOW_CURSOR
+            break
+        except Exception as Error:
+            print SHOW_CURSOR
+            traceback.print_exc()
