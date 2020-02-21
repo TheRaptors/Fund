@@ -48,6 +48,7 @@ def get_stock_info(stock):
     else:
         if float(stock_price) > float(content):
             message = '【%s】价格新高，当前价格：【%s】' % (stock_name, stock_price)
+            message = message.encode('utf-8')
             send_message(message)
             with open(stock_save, 'r+') as f:
                 f.write(stock_price)
