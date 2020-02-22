@@ -56,4 +56,4 @@ def get_stock_info(stock):
 while True:
     for stock in stocks:
         get_stock_info(stock)
-    time.sleep(5)
+    time.sleep(10)
