@@ -49,7 +49,7 @@ def get_stock_info(stock):
         pass
     else:
         if float(stock_price) > float(content):
-            message = u'【%s】价格新高，当前价格：【%s】，涨幅：：【%s%%】，涨跌：【%s】' % (stock_name, stock_price, stock_change, stock_changePercent)
+            message = u'【%s】价格新高，当前价格：【<font color="#FF0000">%s</font>】，涨幅：【<font color="#FF0000">%s%%</font>】，涨跌：【<font color="#FF0000">%s</font>】' % (stock_name, stock_price, stock_change, stock_changePercent)
             send_message(message)
             with open(stock_save, 'r+') as f:
                 f.write(stock_price)
