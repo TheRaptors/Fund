@@ -79,6 +79,7 @@ def send_message(msg, robot = robot):
 def get_stock_info_now(stock_id):
     stock_save = stock_id + '.txt'
     response = requests.get(url = stock_api_url.format(stock_id))
+    response_text = response.text
     stock_info = re.search(r"=\"([ \S]*)\"", response_text).group(1).split(",")
     stock_name = stock_info[0]
     stock_price = stock_info[1]
@@ -112,6 +113,5 @@ while True:
                 lowest = f.readlines()[i]
                 if result[1] <= lowest:
                     message = '【%s】当前价格【%s】低于【%s】天历史价格【%s】' % (result[0], result[1], history[i], lowest)
-                    #message = message.encode('utf-8')
                     send_message(message)
     time.sleep(10)
