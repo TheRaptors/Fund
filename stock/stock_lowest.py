@@ -112,6 +112,6 @@ while True:
             with open(stock_save) as f:
                 lowest = f.readlines()[i]
                 if result[1] <= lowest:
-                    message = '【%s】当前价格【%s】低于【%s】天历史价格【%s】' % (result[0], result[1], history[i], lowest)
+                    message = u'【%s】当前价格【%s】低于【%s】天历史价格【%s】' % (result[0], result[1], history[i], lowest)
                     send_message(message)
     time.sleep(10)
