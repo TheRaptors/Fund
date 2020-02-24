@@ -1,0 +1,5 @@
+baostock==0.8.8
+certifi==2019.11.28
+pandas==1.0.1
+requests==2.23.0
+urllib3==1.25.8
