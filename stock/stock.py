@@ -9,13 +9,15 @@ import requests
 import time
 import urllib3
 
-stocks = [
-         'sh601816',
-         'sz000063',
-         'sz000725',
-         'sz002238',
-         'sz002463',
-         ]
+stocks_list = [
+    'sh.600029',
+    'sh.600999',
+    'sh.601816',
+    'sz.000063',
+    'sz.000725',
+    'sz.002238',
+    'sz.002463',
+]
 
 stock_api_url = "http://hq.sinajs.cn/list=s_{0}"
 
@@ -28,9 +30,9 @@ def send_message(msg, robot = robot):
     send = http.request(method = 'POST', url = robot, body = data, headers = headers)
     print(send.data.decode())
 
-def get_stock_info(stock):
-    stock_save = stock + '.txt'
-    response = requests.get(url = stock_api_url.format(stock))
+def get_stock_info(stock_id):
+    stock_save = stock_id + '.txt'
+    response = requests.get(url = stock_api_url.format(stock_id))
     response_text = response.text
     stock_info = re.search(r"=\"([ \S]*)\"", response_text).group(1).split(",")
     stock_name = stock_info[0]
@@ -55,6 +57,7 @@ def get_stock_info(stock):
                 f.write(stock_price)
 
 while True:
-    for stock in stocks:
-        get_stock_info(stock)
+    for stock_id in stocks_list:
+        stock_id = stock_id.replace('.', '')
+        get_stock_info(stock_id)
     time.sleep(10)
