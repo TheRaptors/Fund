@@ -24,6 +24,8 @@ import urllib3
 
 # 股票列表
 stocks_list = [
+    'sh.600029',
+    'sh.600999',
     'sh.601816',
     'sz.000063',
     'sz.000725',
@@ -87,7 +89,7 @@ def get_stock_info_now(stock_id):
 
 # 截止日期为昨天，此为固定值
 end_date = get_date(1)
-history = [7, 15, 30]
+history = [7, 15, 30, 60, 90, 180, 360]
 
 for stock_id in stocks_list:
     stock_save = stock_id + '.txt'
