@@ -20,6 +20,7 @@ stocks_list = [
     '600029',
     '600999',
     '601816',
+    '603160',
 ]
 
 stock_api_url = "http://hq.sinajs.cn/list=s_{0}"
