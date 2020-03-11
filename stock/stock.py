@@ -9,19 +9,13 @@ import requests
 import time
 import urllib3
 
-stocks_list = [
-    '000063',
-    '000725',
-    '000799',
-    '000858',
-    '000961',
-    '002238',
-    '002463',
-    '600029',
-    '600999',
-    '601816',
-    '603160',
-]
+# 股票列表
+stocks_list = []
+
+with open('config.ini', 'r+') as f:
+    fr = f.readlines()
+    for i in fr:
+        stocks_list.append(i.strip('\n'))
 
 stock_api_url = "http://hq.sinajs.cn/list=s_{0}"
 
