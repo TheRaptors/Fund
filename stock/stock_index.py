@@ -33,7 +33,11 @@ def get_stock_info(stock_id):
     stock_price = stock_info[1]
     stock_changePercent = stock_info[2]
     stock_change = stock_info[3]
-    message = u'【%s】【<font color="#FF0000">%s</font>】，涨幅：【<font color="#FF0000">%s%%</font>】，涨跌：【<font color="#FF0000">%s</font>】' % (stock_name, stock_price, stock_change, stock_changePercent)
+    if float(stock_changePercent) >= 0:
+        message = u'【%s】【<font color="#FF0000">%s</font>】，涨幅：【<font color="#FF0000">%s%%</font>】，涨跌：【<font color="#FF0000">%s</font>】' % (stock_name, stock_price, stock_change, stock_changePercent)
+    else:
+        message = u'【%s】【<font color="#008000">%s</font>】，涨幅：【<font color="#008000">%s%%</font>】，涨跌：【<font color="#008000">%s</font>】' % (stock_name, stock_price, stock_change, stock_changePercent)
+
     return message
 
 TIME = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
