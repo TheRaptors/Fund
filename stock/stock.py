@@ -35,8 +35,8 @@ def get_stock_info(stock_id):
     stock_info = re.search(r"=\"([ \S]*)\"", response_text).group(1).split(",")
     stock_name = stock_info[0]
     stock_price = stock_info[1]
-    stock_changePercent = stock_info[2]
-    stock_change = stock_info[3]
+    stock_change = stock_info[2]
+    stock_changePercent = stock_info[3]
     if not os.path.exists(stock_save):
         with open(stock_save, 'w+') as f:
             f.write(stock_price)
@@ -49,7 +49,10 @@ def get_stock_info(stock_id):
         pass
     else:
         if float(stock_price) > float(content):
-            message = u'【%s】价格新高，当前价格：【<font color="#FF0000">%s</font>】，涨幅：【<font color="#FF0000">%s%%</font>】，涨跌：【<font color="#FF0000">%s</font>】' % (stock_name, stock_price, stock_change, stock_changePercent)
+            if float(stock_change) > 0:
+                message = u'【%s】价格新高，当前价格：【<font color="#FF0000">%s</font>】，涨幅：【<font color="#FF0000">%s%%</font>】，涨跌：【<font color="#FF0000">%s</font>】' % (stock_name, stock_price, stock_changePercent, stock_change)
+            else:
+                message = u'【%s】价格新高，当前价格：【<font color="#008000">%s</font>】，涨幅：【<font color="#008000">%s%%</font>】，涨跌：【<font color="#008000">%s</font>】' % (stock_name, stock_price, stock_changePercent, stock_change)
             send_message(message)
             with open(stock_save, 'r+') as f:
                 f.write(stock_price)
