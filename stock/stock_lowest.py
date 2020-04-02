@@ -76,7 +76,7 @@ def send_message(msg, robot = robot):
 
 # 获取股票当前数据
 def get_stock_info_now(stock_id):
-    stock_save = stock_id + '.txt'
+    stock_save = stock_id + '_lowest.txt'
     response = requests.get(url = stock_api_url.format(stock_id))
     response_text = response.text
     stock_info = re.search(r"=\"([ \S]*)\"", response_text).group(1).split(",")
