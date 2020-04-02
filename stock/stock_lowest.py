@@ -76,7 +76,6 @@ def send_message(msg, robot = robot):
 
 # 获取股票当前数据
 def get_stock_info_now(stock_id):
-    stock_save = stock_id + '_lowest.txt'
     response = requests.get(url = stock_api_url.format(stock_id))
     response_text = response.text
     stock_info = re.search(r"=\"([ \S]*)\"", response_text).group(1).split(",")
@@ -93,7 +92,7 @@ for stock_id in stocks_list:
         stock_id = 'sh.' + stock_id
     elif stock_id[0:2] == '00' or stock_id[0:3] == '200' or stock_id[0:3] == '300':
         stock_id = 'sz.' + stock_id
-    stock_save = stock_id + '.txt'
+    stock_save = stock_id + '_lowest.txt'
     if os.path.exists(stock_save):
         os.remove(stock_save)
 
@@ -104,7 +103,7 @@ for i in history:
             stock_id = 'sh.' + stock_id
         elif stock_id[0:2] == '00' or stock_id[0:3] == '200' or stock_id[0:3] == '300':
             stock_id = 'sz.' + stock_id
-        stock_save = stock_id + '.txt'
+        stock_save = stock_id + '_lowest.txt'
         lowest = get_stock_info_history(stock_id = stock_id, start_date = start_date, end_date = end_date)
         with open(stock_save, 'a+') as f:
             f.write(lowest)
@@ -117,7 +116,7 @@ while True:
                 stock_id = 'sh.' + stock_id
             elif stock_id[0:2] == '00' or stock_id[0:3] == '200' or stock_id[0:3] == '300':
                 stock_id = 'sz.' + stock_id
-            stock_save = stock_id + ".txt"
+            stock_save = stock_id + '_lowest.txt'
             stock_id = stock_id.replace('.', '')
             result = get_stock_info_now(stock_id)
             with open(stock_save) as f:
