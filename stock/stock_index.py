@@ -15,7 +15,7 @@ stocks_list = ['sh000001', 'sz399001', 'sz399006']
 
 stock_api_url = "http://hq.sinajs.cn/list=s_{0}"
 
-robot = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=a67c801f-75f0-47b8-bf2a-bf032add14f0'
+robot = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=d9e61993-7cc2-45ea-a64a-65e92e615bbe'
 
 def send_message(msg, robot = robot):
     headers = {'Content-Type': 'application/json'}
