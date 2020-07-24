@@ -48,6 +48,6 @@ for stock_id in stocks_list:
     message = get_stock_info(stock_id)
     msg.append(message)
 
-ALL = TIME + '\n' + msg[0] + '\n' + msg[1] + '\n' + msg[2]
+ALL = TIME + '\n' + msg[0] + '\n' + msg[1] + '\n' + msg[2] + '\n' + msg[3]
 
 send_message(msg = ALL)
