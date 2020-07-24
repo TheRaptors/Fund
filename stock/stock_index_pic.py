@@ -11,7 +11,7 @@ import time
 import urllib3
 
 # 股票列表
-stocks_list = ['sh000001', 'sz399001', 'sz399006']
+stocks_list = ['sh000001', 'sh000688', 'sz399001', 'sz399006']
 
 stock_api_url = "https://image.sinajs.cn/newchart/min/n/{0}.png"
 
