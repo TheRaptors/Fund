@@ -36,8 +36,9 @@ class WorkWeChatRobot(object):
                 news_id = f.read()
             self.is_exist_news = news_id.split('|')
         else:
-            with open('readhub.log', 'r') as f:
+            with open('readhub.log', 'a') as f:
                 f.write('')
+            self.is_exist_news = []
         for new in self.news:
             if new['id'] not in self.is_exist_news:
                 self.is_not_exist_news.append(new)
