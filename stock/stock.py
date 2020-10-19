@@ -50,9 +50,9 @@ def get_stock_info(stock_id):
     else:
         if float(stock_price) > float(content):
             if float(stock_change) > 0:
-                message = u'【%s】价格新高，当前价格：【<font color="#FF0000">%s</font>】，涨幅：【<font color="#FF0000">%s%%</font>】，涨跌：【<font color="#FF0000">%s</font>】' % (stock_name, stock_price, stock_changePercent, stock_change)
+                message = u'【%s】价格<font color="#FF0000">新高</font>，当前价格：【<font color="#FF0000">%s</font>】，涨幅：【<font color="#FF0000">%s%%</font>】，涨跌：【<font color="#FF0000">%s</font>】' % (stock_name, stock_price, stock_changePercent, stock_change)
             else:
-                message = u'【%s】价格新高，当前价格：【<font color="#008000">%s</font>】，涨幅：【<font color="#008000">%s%%</font>】，涨跌：【<font color="#008000">%s</font>】' % (stock_name, stock_price, stock_changePercent, stock_change)
+                message = u'【%s】价格<font color="#008000">新高</font>，当前价格：【<font color="#008000">%s</font>】，涨幅：【<font color="#008000">%s%%</font>】，涨跌：【<font color="#008000">%s</font>】' % (stock_name, stock_price, stock_changePercent, stock_change)
             send_message(message)
             with open(stock_save, 'r+') as f:
                 f.write(stock_price)
