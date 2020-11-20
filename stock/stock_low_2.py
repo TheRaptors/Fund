@@ -15,7 +15,8 @@ stocks_list = []
 with open('config.ini', 'r+') as f:
     fr = f.readlines()
     for i in fr:
-        stocks_list.append(i.strip('\n'))
+        id = i.split(' ')[-1].strip('\n')
+        stocks_list.append(id)
 
 # 股票价格
 stocks_price = {}
